@@ -16,14 +16,6 @@ type
     Panel2: TPanel;
     btnLight_off: TSpeedButton;
     name: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    track_left_low: TTrackBar;
-    track_right_low: TTrackBar;
-    track_left_hi: TTrackBar;
-    track_right_hi: TTrackBar;
     Panel3: TPanel;
     Label6: TLabel;
     Switch1: TSwitch;
@@ -34,12 +26,26 @@ type
     Label9: TLabel;
     Switch2: TSwitch;
     Label10: TLabel;
-    lbtrack4: TLabel;
-    lbtrack3: TLabel;
-    lbtrack2: TLabel;
-    lbtrack1: TLabel;
-    btnSave: TButton;
     StyleBook1: TStyleBook;
+    Panel5: TPanel;
+    lbtrack1: TLabel;
+    track_left_low: TTrackBar;
+    Label2: TLabel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Label3: TLabel;
+    track_right_low: TTrackBar;
+    lbtrack2: TLabel;
+    Label5: TLabel;
+    track_left_hi: TTrackBar;
+    lbtrack3: TLabel;
+    Label4: TLabel;
+    track_right_hi: TTrackBar;
+    lbtrack4: TLabel;
+    cbReplay: TCheckBox;
+    Panel9: TPanel;
+    btnSave: TButton;
     procedure btnLight_lowClick(Sender: TObject);
     procedure btnLight_offClick(Sender: TObject);
     procedure btnLight_HiClick(Sender: TObject);
@@ -86,22 +92,27 @@ end;
 
 procedure TForm1.track_left_hiChange(Sender: TObject);
 begin
-     lbtrack3.Text := floatTostr(Round(track_left_hi.Value));
+     lbtrack3.Text := floatTostr(Round(track_left_hi.Value/2.55))+'%';
+     if cbReplay.IsChecked then  track_right_hi.Value  := track_left_hi.Value;
 end;
 
 procedure TForm1.track_left_lowChange(Sender: TObject);
 begin
-    lbtrack1.Text := floatTostr(Round(track_left_low.Value));
+    lbtrack1.Text := floatTostr(Round(track_left_low.Value/2.55))+'%';
+    if cbReplay.IsChecked then track_right_low.Value := track_left_low.Value;
+
 end;
 
 procedure TForm1.track_right_hiChange(Sender: TObject);
 begin
-    lbtrack4.Text := floatTostr(Round(track_right_hi.Value));
+    lbtrack4.Text := floatTostr(Round(track_right_hi.Value/2.55))+'%';
+    if cbReplay.IsChecked then  track_left_hi.Value   := track_right_hi.Value;
 end;
 
 procedure TForm1.track_right_lowChange(Sender: TObject);
 begin
-     lbtrack2.Text := floatTostr(Round(track_right_low.Value));
+     lbtrack2.Text := floatTostr(Round(track_right_low.Value/2.55))+'%';
+     if cbReplay.IsChecked then  track_left_low.Value  := track_right_low.Value;
 end;
 
 end.
