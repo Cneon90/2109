@@ -24,8 +24,6 @@ type
     Label8: TLabel;
     Panel4: TPanel;
     Label9: TLabel;
-    Switch2: TSwitch;
-    Label10: TLabel;
     StyleBook1: TStyleBook;
     Panel5: TPanel;
     lbtrack1: TLabel;
@@ -46,6 +44,16 @@ type
     cbReplay: TCheckBox;
     Panel9: TPanel;
     btnSave: TButton;
+    Panel10: TPanel;
+    Label10: TLabel;
+    ptf_left: TTrackBar;
+    Panel11: TPanel;
+    Label11: TLabel;
+    ptf_rifht: TTrackBar;
+    cbRepkay_ptf: TCheckBox;
+    Panel12: TPanel;
+    Label12: TLabel;
+    Switch2: TSwitch;
     procedure btnLight_lowClick(Sender: TObject);
     procedure btnLight_offClick(Sender: TObject);
     procedure btnLight_HiClick(Sender: TObject);
@@ -53,6 +61,8 @@ type
     procedure track_right_lowChange(Sender: TObject);
     procedure track_left_hiChange(Sender: TObject);
     procedure track_right_hiChange(Sender: TObject);
+    procedure ptf_leftChange(Sender: TObject);
+    procedure ptf_rifhtChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,6 +98,18 @@ begin
     track_right_low.value:= 0;
     track_left_hi.value  := 0;
     track_right_hi.value := 0;
+end;
+
+procedure TForm1.ptf_leftChange(Sender: TObject);
+begin
+    if cbRepkay_ptf.IsChecked then
+    ptf_rifht.Value := ptf_left.Value;
+end;
+
+procedure TForm1.ptf_rifhtChange(Sender: TObject);
+begin
+    if cbRepkay_ptf.IsChecked then
+       ptf_left.Value  :=  ptf_rifht.Value;
 end;
 
 procedure TForm1.track_left_hiChange(Sender: TObject);
